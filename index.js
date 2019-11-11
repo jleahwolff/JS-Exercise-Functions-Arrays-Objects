@@ -81,15 +81,21 @@ console.log(getName("Leia"));
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
 function makeSmartPerson(myName){
-    name:myName,
-    sum: function(num1, num2){
+  let thisPerson = {
+    name: myName,
+
+    sum: function(num1,num2){
       return num1 + num2;
+    },
+    speak: function() {
+      return `Hello my name is ${thisPerson.name}`;
     }
-    speak: function(){
-      return `Hello my name is ${myName}`;
-    }
-  };
-  console.log(makeSmartPerson);
+  }
+  return thisPerson;
+};
+  console.log(makeSmartPerson());
+
+
 
 
 
