@@ -204,14 +204,15 @@ function getCarInfoById(inventory, id) {
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
 function sortCarInventory(inventory) {
-  // inventory.sort((car1,car2) => (car1.car_model > car2.car_model) ? 1: -1)
-  inventory.sort((car1,car2) => {
-    if(car1.car_model > car2.car_model){
-      return 1;
-    } else{
-      return -1;
-    }
-  })
+  inventory.sort((car1,car2) => (car1.car_model > car2.car_model) ? 1: -1)
+  return inventory;
+  // inventory.sort(function(car1, car2) {
+  //   if(car1.car_model > car2.car_model){
+  //     return 1;
+  //   } else{
+  //     return -1;
+  //   }
+  // })
   /* code here */
 }
 
@@ -224,8 +225,12 @@ function sortCarInventory(inventory) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(inventory) {
+  let carYears = [];
+  for (let i = 0; i < inventory.length; i++){
+    carYears[i] = inventory[i].car_year
+  }
+  return carYears;
 }
 
 /**
@@ -240,8 +245,14 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, maxYear) {
+  let yearDesired = [];
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].car_year <= maxYear){
+      yearDesired.push(inventory[i])
+    }
+  }
+  return yearDesired;
 }
 
 /**
@@ -255,8 +266,15 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  let car = []
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].car_make === "Audi"||
+    inventory[i]car_make ==="Mercedes-Benz"||
+    inventory[i]car_make === "Volkswagen"||
+    inventory[i]car_make === "BMW")
+    {car.push(inventory[i])}
+  }
 }
 
 /**
@@ -265,9 +283,8 @@ function getGermanCars(/* code here */) {
  * @instructions
  * Create arrow function versions of the following commented-out functions:
  * 
- * const sum = function (a, b) {
- *   return a + b
- * }
+ * const sum = (a, b) => a + b
+ *
  * 
  * const addFive = function(num) {
 *    return num + 5
@@ -277,7 +294,7 @@ function getGermanCars(/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
+const sum = (a,b) => a + b; // code here!
 const addFive = null; // code here!
 const argTimesTwo = null; // code here!
 
